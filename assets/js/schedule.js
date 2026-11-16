@@ -22,7 +22,7 @@ function card(d,o,today){const dt=new Date(+d.slice(0,4),+d.slice(5,7)-1,+d.slic
  return `<div class="dc${d<today?" past":""}"><div class="dh"><span class="dd">${+d.slice(8)}</span><span class="dw">${+d.slice(5,7)}月 ${wd}曜日</span>${bd}</div>${ve}${day.n?`<p class="nt">${esc(day.n)}</p>`:""}${rows.map(r=>{
   const tm=!r.s?"時間調整中":r.st==="時間変更"&&r.ts&&(r.s!==r.ts||r.e!==r.te)?`<span class="old">${r.ts}–${r.te}</span> → <span class="tt">${r.s}–${r.e}</span>`:`<span class="tt">${r.s}${r.e?"–"+r.e:""}</span>`;
   const b2=r.st==="休講"&&day.st!=="休講"?'<span class="bd x">休講</span>':r.st==="時間変更"&&day.st!=="時間変更"?'<span class="bd t">時間変更</span>':"";
-  return `<div class="cr${r.st==="休講"?" cx":""}"><div class="t1">${tm}<span class="nm">${esc(r.c)}</span>${b2}${r.t?`<span class="bd s">代講：${esc(r.t)}</span>`:""}</div>${r.v&&r.v!==cv?lk(r.v,r.r):""}${r.n?`<p class="nt">${esc(r.n)}</p>`:""}</div>`}).join("")}</div>`}
+  return `<div class="cr${r.st==="休講"?" cx":""}"><div class="t1">${tm}<span class="nm">${esc(r.c)}</span>${b2}${r.t?`<span class="bd s">代講：${esc(r.t)}</span>`:""}</div>${r.v&&r.v!==cv&&r.st!=="休講"?lk(r.v,r.r):""}${r.n?`<p class="nt">${esc(r.n)}</p>`:""}</div>`}).join("")}</div>`}
 function show(msg){$("mtabs").innerHTML="";$("mbody").innerHTML=`<div class="empty">${msg}</div>`}
 function view(g){const now=new Date(),today=now.getFullYear()+"-"+p2(now.getMonth()+1)+"-"+p2(now.getDate()),b=now<new Date(2027,0,1)?new Date(2027,0,1):now,ms=[0,1,2].map(i=>{const d=new Date(b.getFullYear(),b.getMonth()+i,1);return{k:d.getFullYear()+"-"+p2(d.getMonth()+1),l:(d.getMonth()+1)+"月"}});
  const ok=o=>o.cls.length>0||!!(o.day&&(o.day.v||o.day.raw)),has=m=>Object.keys(g).some(d=>d.startsWith(m.k)&&ok(g[d]));let cur=Math.max(0,ms.findIndex(has));
