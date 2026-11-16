@@ -23,7 +23,7 @@ GitHub Pagesで公開する静的サイトです。ビルド不要で、この�
 4. 数分後、`https://ユーザー名.github.io/magna-website/` で公開される。
 
 ## 更新するとき
-- **文言・料金・時間割**: `index.html` と `assets/js/index.js`（時間割・NEWS・料金・講師の紹介文はここ）
+- **文言・料金・時間割**: `assets/js/data.js`（時間割・NEWS・料金はここ。トップ・news.html・class.html・price.html に反映）、`assets/js/index.js`（講師の紹介文・Instagram）、各HTML（HTMLにも同じ内容が書かれているので、あわせて直します）
 - **講師の経歴**: `assets/js/instructor.js`
 - **講師の写真**: `assets/images/instructors/<名前>.jpg` を同じ名前で差し替える
 - **会員規約**: `terms.html`
