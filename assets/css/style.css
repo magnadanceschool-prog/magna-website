@@ -23,8 +23,9 @@ h2 small{display:block;font:500 13px/1.6 "Noto Sans JP",sans-serif;color:var(--m
 @keyframes pop{from{opacity:0;transform:scale(1.08) rotate(-1.5deg)}to{opacity:1;transform:none}}
 .hero p{margin:0 0 26px;font-size:15px;max-width:30em}
 .hero .acts{display:flex;gap:12px;flex-wrap:wrap}
-.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
-.rv.in{opacity:1;transform:none}
+.rv{transition:opacity .8s ease,transform .8s ease}
+.js .rv{opacity:0;transform:translateY(26px)}
+.js .rv.in,.no-rv .rv{opacity:1;transform:none}
 .concept{background:var(--dg);overflow:hidden}
 .concept .big{font-size:clamp(54px,17vw,190px);color:transparent;-webkit-text-stroke:1px #ffffff40;margin:0 0 30px;white-space:nowrap}
 .concept .big b{color:var(--wh);-webkit-text-stroke:0;font-weight:400}
@@ -106,6 +107,7 @@ body{font-size:16px}section{padding:140px 0}.wrap{padding:0 40px}
 .news .d{grid-column:2}
 .acc .cols{display:grid;grid-template-columns:1fr 1fr;gap:0 60px}
 }
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero .logo{animation:none}.band{background-attachment:scroll}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.hero .logo{animation:none}.band{background-attachment:scroll}html{scroll-behavior:auto}}
 footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 14px}footer .fl a{font-size:13px;color:var(--mu)}footer .fl a:hover{color:#fff}
 .sl{font-weight:900;font-size:14px;text-decoration:underline;text-underline-offset:4px}
+.more+.more{margin-left:8px}

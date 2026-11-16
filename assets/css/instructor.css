@@ -9,3 +9,4 @@
 .ins .tl{display:grid;grid-template-columns:5.2em 1fr;gap:10px 14px;margin:0;font-size:14px;line-height:1.75}
 .ins .tl dt{font-weight:900;color:var(--rd)}.ins .tl dd{margin:0}
 @media(min-width:820px){.ins{grid-template-columns:320px 1fr;gap:44px}.ins .ph{position:sticky;top:84px;align-self:start}}
+.ins .ig{display:inline-block;margin:0 0 14px;font-weight:900;font-size:13px;text-decoration:underline;text-underline-offset:4px}.ins .ig:hover{color:var(--rd)}
