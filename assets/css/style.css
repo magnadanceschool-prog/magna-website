@@ -99,7 +99,7 @@ h2 small{display:block;font:500 13px/1.6 "Noto Sans JP",sans-serif;color:var(--m
 footer{padding:36px 0 48px;color:var(--mu);font-size:12px;border-top:1px solid #ffffff14}
 @media(min-width:760px){
 body{font-size:16px}section{padding:140px 0}.wrap{padding:0 40px}
-.hdr nav{display:flex}.hdr .btn{display:none}
+.hdr .btn{display:none}.hdr .mn{margin-left:auto}
 .days{grid-template-columns:repeat(3,1fr);gap:40px}
 .grid{grid-template-columns:repeat(2,1fr)}.grid.g3{grid-template-columns:repeat(3,1fr)}
 .inst .g{grid-template-columns:repeat(4,1fr)}
@@ -111,3 +111,16 @@ body{font-size:16px}section{padding:140px 0}.wrap{padding:0 40px}
 footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 14px}footer .fl a{font-size:13px;color:var(--mu)}footer .fl a:hover{color:#fff}
 .sl{font-weight:900;font-size:14px;text-decoration:underline;text-underline-offset:4px}
 .more+.more{margin-left:8px}
+.hdr .btn{margin-left:auto}.hdr .mn{margin-left:6px}
+.hdr .mn summary{list-style:none;cursor:pointer;width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent}
+.hdr .mn summary::-webkit-details-marker{display:none}
+.hdr .mn summary i{display:block;width:24px;height:2px;background:#fff;transition:transform .2s,opacity .2s}
+.hdr .mn[open] summary i:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.hdr .mn[open] summary i:nth-child(2){opacity:0}
+.hdr .mn[open] summary i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+.hdr .mn .pn{position:absolute;left:0;right:0;top:100%;max-height:calc(100dvh - 60px);overflow:auto;background:#080808;padding:8px 24px 32px;border-bottom:1px solid #ffffff14}
+.hdr .mn .pn a{display:flex;align-items:baseline;gap:14px;padding:16px 0;border-bottom:1px solid #ffffff1f;font:400 24px Anton,sans-serif;letter-spacing:.08em}
+.hdr .mn .pn a small{font:500 12px 'Noto Sans JP',sans-serif;letter-spacing:.04em;color:var(--mu)}
+.hdr .mn .pn a:hover{color:var(--rd)}
+@media(min-width:1100px){.hdr nav{display:flex}.hdr .mn{display:none}}
+@media(min-width:760px){.hdr .mn{margin-left:auto}}
