@@ -126,3 +126,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 14px}footer .fl a
 @media(min-width:1100px){.hdr nav{display:flex}.hdr .mn{display:none}}
 @media(min-width:760px){.hdr .mn{margin-left:auto}}
 @media(min-width:900px){.hero{background-position:center,center 0%}.hero .logo{width:min(60%,560px)}}
+
+.row .cl a{color:inherit;text-decoration:none;border-bottom:1px solid #ffffff4d;padding-bottom:1px}
+.row .cl a::after{content:" ›";color:var(--rd)}
+.row .cl a:hover{border-color:var(--rd)}
