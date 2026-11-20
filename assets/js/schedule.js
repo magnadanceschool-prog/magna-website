@@ -16,7 +16,7 @@ function toData(rows){const h=rows[0].map(x=>x.replace(/^\uFEFF/,"").trim()),ix=
 function card(d,o,today){const dt=new Date(+d.slice(0,4),+d.slice(5,7)-1,+d.slice(8)),wd="日月火水木金土"[dt.getDay()],day=o.day||{v:"",r:"",st:"通常",n:""};
  const rows=((W.find(w=>w[2]===wd)||[0,0,0,[]])[3]).map(t=>({c:t[2],s:t[0]||day.s||"",e:t[1]||day.e||"",ts:t[0],te:t[1],v:(day.m&&norm(t[2])==="morningclass")?day.m:day.v,r:(day.m&&norm(t[2])==="morningclass")?"":day.r,st:day.st,n:"",t:""}));
  o.cls.forEach(x=>{const k=rows.find(r=>norm(r.c)===norm(x.c));if(k){k.v=x.v||day.v;k.r=x.r||day.r;k.st=x.st;k.n=x.n;k.t=x.t;if(x.s){k.s=x.s;k.e=x.e||k.e;if(x.st==="通常"&&(k.s!==k.ts||k.e!==k.te))k.st="時間変更"}}else rows.push({c:x.c,s:x.s,e:x.e,ts:"",te:"",v:x.v||day.v,r:x.r||day.r,st:x.st,n:x.n,t:x.t})});
- const cv=day.v||(o.day?"":(rows[0]&&rows[0].v)||""),lk=(v,r)=>`<a class="vn" href="${map(v)}" target="_blank" rel="noopener">会場：${esc(v)}${r?" ／ "+esc(r):""} ↗</a>`;
+ const cv=day.v||(o.day?"":(rows[0]&&rows[0].v)||""),lk=(v,r)=>/調整中|未定/.test(v)?`<span class="vn">会場：${esc(String(v).replace(/^会場/,""))}</span>`:`<a class="vn" href="${map(v)}" target="_blank" rel="noopener">会場：${esc(v)}${r?" ／ "+esc(r):""} ↗</a>`;
  const bd=day.st==="休講"?'<span class="bd x">全クラス休講</span>':day.st==="時間変更"?'<span class="bd t">時間変更</span>':day.st==="調整中"?'<span class="bd p">調整中</span>':"";
  const ve=cv?lk(cv,day.r):day.st==="休講"?"":'<span class="vn">会場：調整中</span>';
  return `<div class="dc${d<today?" past":""}"><div class="dh"><span class="dd">${+d.slice(8)}</span><span class="dw">${+d.slice(5,7)}月 ${wd}曜日</span>${bd}</div>${ve}${day.n?`<p class="nt">${esc(day.n)}</p>`:""}${rows.map(r=>{
