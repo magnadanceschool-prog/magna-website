@@ -20,7 +20,7 @@ function card(d,o,today){const dt=new Date(+d.slice(0,4),+d.slice(5,7)-1,+d.slic
  const bd=day.st==="休講"?'<span class="bd x">全クラス休講</span>':day.st==="時間変更"?'<span class="bd t">時間変更</span>':day.st==="調整中"?'<span class="bd p">調整中</span>':"";
  const ve=cv?lk(cv,day.r):day.st==="休講"?"":'<span class="vn">会場：調整中</span>';
  return `<div class="dc${d<today?" past":""}"><div class="dh"><span class="dd">${+d.slice(8)}</span><span class="dw">${+d.slice(5,7)}月 ${wd}曜日</span>${bd}</div>${ve}${day.n?`<p class="nt">${esc(day.n)}</p>`:""}${rows.map(r=>{
-  const tm=!r.s?"時間調整中":r.st==="時間変更"&&r.ts&&(r.s!==r.ts||r.e!==r.te)?`<span class="old">${r.ts}–${r.te}</span> → <span class="tt">${r.s}–${r.e}</span>`:`<span class="tt">${r.s}${r.e?"–"+r.e:""}</span>`;
+  const tm=!r.s?(r.st==="休講"?"":"時間調整中"):r.st==="時間変更"&&r.ts&&(r.s!==r.ts||r.e!==r.te)?`<span class="old">${r.ts}–${r.te}</span> → <span class="tt">${r.s}–${r.e}</span>`:`<span class="tt">${r.s}${r.e?"–"+r.e:""}</span>`;
   const b2=r.st==="休講"&&day.st!=="休講"?'<span class="bd x">休講</span>':r.st==="時間変更"&&day.st!=="時間変更"?'<span class="bd t">時間変更</span>':"";
   return `<div class="cr${r.st==="休講"?" cx":""}"><div class="t1">${tm}<span class="nm">${esc(r.c)}</span>${b2}${r.t?`<span class="bd s">代講：${esc(r.t)}</span>`:""}</div>${r.v&&r.v!==cv&&r.st!=="休講"?lk(r.v,r.r):""}${r.n?`<p class="nt">${esc(r.n)}</p>`:""}</div>`}).join("")}</div>`}
 function show(msg){$("mtabs").innerHTML="";$("mbody").innerHTML=`<div class="empty">${msg}</div>`}
