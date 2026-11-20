@@ -3,7 +3,9 @@ const W=[["WED","水曜日","水",[["10:30","11:20","Morning Class","SHiN","clas
 const VEN={"カムカム新蒲田":"東京都大田区新蒲田一丁目18番16号 カムカム新蒲田","池上会館":"東京都大田区池上1丁目32-8 池上会館","池上会館多目的ホール":"東京都大田区池上1丁目32-8 池上会館"};
 const $=s=>document.getElementById(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const map=v=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(VEN[v]||v);
+/* 会場名に含まれる言葉ごとの、Googleマップのリンク（ここに追加すると、その会場はこのリンクになります） */
+const MAPURL={"文化の森":"https://www.google.com/maps?client=safari&udm&fvr=1&pvq=CgsvZy8xMjFnMXhicCISCgzmlofljJbjga7mo64QAhgDiQEwjxVJlEkUFw&lqi=CgzmlofljJbjga7mo65I1eKDl4iAgIAIWhwQABABEAIYABgBGAIiDuaWh-WMliDjga4g5qOukgEMY29uY2VydF9oYWxsmgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVVJhTVU5TVkyMUJSUkFC-gEECAAQIw&vet=10CAAQoqAOahcKEwiY74yS9JaYAxUAAAAAHQAAAAAQBg..i&cs=1&um=1&ie=UTF-8&fb=1&gl=jp&sa=X&ftid=0x60186039bfbedaef:0x1714499449158f30"};
+const map=v=>{const k=Object.keys(MAPURL).find(k=>String(v).includes(k));return k?MAPURL[k]:"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(VEN[v]||v)};
 const p2=n=>String(n).padStart(2,"0");
 const norm=s=>String(s).toLowerCase().replace(/[\s\u3000]/g,"");
 $("week").innerHTML=W.map(d=>`<div class="day"><h3 class="disp">${d[0]}<small style="font:500 12px 'Noto Sans JP';color:var(--mu);margin-left:10px">${d[1]}</small></h3>${d[3].map(x=>`<div class="row">${x[0]?`<span class="tm">${x[0]}–${x[1]}</span>`:`<span class="tm vr">日時変動</span>`}<span class="cl">${x[4]?`<a href="${x[4]}">${x[2]}</a>`:x[2]}</span><span class="in">${esc(x[3])}</span></div>`).join("")}</div>`).join("");
