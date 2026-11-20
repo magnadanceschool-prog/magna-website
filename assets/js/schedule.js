@@ -12,9 +12,9 @@ const nd=s=>{const m=String(s).match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);return m
 const nt=s=>{const m=String(s).match(/(\d{1,2})[:：時](\d{2})/);return m?p2(m[1])+":"+m[2]:""};
 const nst=s=>{s=String(s);return /休講/.test(s)?"休講":/時間変更/.test(s)?"時間変更":/調整中/.test(s)?"調整中":"通常"};
 function toData(rows){const h=rows[0].map(x=>x.replace(/^\uFEFF/,"").trim()),ix=n=>h.indexOf(n),g={},v=(r,n)=>ix(n)<0?"":(r[ix(n)]||"").trim();
- rows.slice(1).forEach(r=>{const d=nd(v(r,"日付"));if(!d)return;const o=g[d]=g[d]||{day:null,cls:[]},c=v(r,"クラス名"),x={c:c,s:nt(v(r,"開始時間")),e:nt(v(r,"終了時間")),v:v(r,"会場"),r:v(r,"部屋名"),st:nst(v(r,"開催状況")+v(r,"状態")),n:v(r,"備考"),t:v(r,"担当講師")||v(r,"代講"),raw:v(r,"開催状況")+v(r,"状態")};if(c)o.cls.push(x);else o.day=x});return g}
+ rows.slice(1).forEach(r=>{const d=nd(v(r,"日付"));if(!d)return;const o=g[d]=g[d]||{day:null,cls:[]},c=v(r,"クラス名"),x={c:c,s:nt(v(r,"開始時間")),e:nt(v(r,"終了時間")),v:v(r,"会場"),r:v(r,"部屋名"),st:nst(v(r,"開催状況")+v(r,"状態")),n:v(r,"備考"),t:v(r,"担当講師")||v(r,"代講"),raw:v(r,"開催状況")+v(r,"状態"),m:v(r,"朝の会場")||v(r,"Morning Class会場")||v(r,"モーニング会場")};if(c)o.cls.push(x);else o.day=x});return g}
 function card(d,o,today){const dt=new Date(+d.slice(0,4),+d.slice(5,7)-1,+d.slice(8)),wd="日月火水木金土"[dt.getDay()],day=o.day||{v:"",r:"",st:"通常",n:""};
- const rows=((W.find(w=>w[2]===wd)||[0,0,0,[]])[3]).map(t=>({c:t[2],s:t[0],e:t[1],ts:t[0],te:t[1],v:day.v,r:day.r,st:day.st,n:"",t:""}));
+ const rows=((W.find(w=>w[2]===wd)||[0,0,0,[]])[3]).map(t=>({c:t[2],s:t[0],e:t[1],ts:t[0],te:t[1],v:(day.m&&norm(t[2])==="morningclass")?day.m:day.v,r:(day.m&&norm(t[2])==="morningclass")?"":day.r,st:day.st,n:"",t:""}));
  o.cls.forEach(x=>{const k=rows.find(r=>norm(r.c)===norm(x.c));if(k){k.v=x.v||day.v;k.r=x.r||day.r;k.st=x.st;k.n=x.n;k.t=x.t;if(x.s){k.s=x.s;k.e=x.e||k.e;if(x.st==="通常"&&(k.s!==k.ts||k.e!==k.te))k.st="時間変更"}}else rows.push({c:x.c,s:x.s,e:x.e,ts:"",te:"",v:x.v||day.v,r:x.r||day.r,st:x.st,n:x.n,t:x.t})});
  const cv=day.v||(o.day?"":(rows[0]&&rows[0].v)||""),lk=(v,r)=>`<a class="vn" href="${map(v)}" target="_blank" rel="noopener">会場：${esc(v)}${r?" ／ "+esc(r):""} ↗</a>`;
  const bd=day.st==="休講"?'<span class="bd x">全クラス休講</span>':day.st==="時間変更"?'<span class="bd t">時間変更</span>':day.st==="調整中"?'<span class="bd p">調整中</span>':"";
@@ -25,7 +25,7 @@ function card(d,o,today){const dt=new Date(+d.slice(0,4),+d.slice(5,7)-1,+d.slic
   return `<div class="cr${r.st==="休講"?" cx":""}"><div class="t1">${tm}<span class="nm">${esc(r.c)}</span>${b2}${r.t?`<span class="bd s">代講：${esc(r.t)}</span>`:""}</div>${r.v&&r.v!==cv&&r.st!=="休講"?lk(r.v,r.r):""}${r.n?`<p class="nt">${esc(r.n)}</p>`:""}</div>`}).join("")}</div>`}
 function show(msg){$("mtabs").innerHTML="";$("mbody").innerHTML=`<div class="empty">${msg}</div>`}
 function view(g){const now=new Date(),today=now.getFullYear()+"-"+p2(now.getMonth()+1)+"-"+p2(now.getDate()),b=now<new Date(2027,0,1)?new Date(2027,0,1):now,ms=[0,1,2].map(i=>{const d=new Date(b.getFullYear(),b.getMonth()+i,1);return{k:d.getFullYear()+"-"+p2(d.getMonth()+1),l:(d.getMonth()+1)+"月"}});
- const ok=o=>o.cls.length>0||!!(o.day&&(o.day.v||o.day.raw)),has=m=>Object.keys(g).some(d=>d.startsWith(m.k)&&ok(g[d]));let cur=Math.max(0,ms.findIndex(has));
+ const ok=o=>o.cls.length>0||!!(o.day&&(o.day.v||o.day.m||o.day.raw)),has=m=>Object.keys(g).some(d=>d.startsWith(m.k)&&ok(g[d]));let cur=Math.max(0,ms.findIndex(has));
  const draw=()=>{$("mtabs").innerHTML=ms.map((m,i)=>`<button role="tab" data-i="${i}" aria-selected="${i===cur}">${m.l}</button>`).join("");
   const ds=has(ms[cur])?Object.keys(g).filter(d=>d.startsWith(ms[cur].k)).sort():[];
   $("mbody").innerHTML=ds.length?ds.map(d=>card(d,g[d],today)).join(""):'<div class="empty">未掲載</div>'};
