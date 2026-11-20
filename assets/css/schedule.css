@@ -20,3 +20,5 @@
 .dbg{margin:18px 0 0;padding:12px;background:#000;border:1px solid #ffffff26;color:#9fe;font:12px/1.6 monospace;white-space:pre-wrap;word-break:break-all}
 .empty{padding:28px 16px;border:1px dashed #ffffff40;color:var(--mu);font-size:14px;text-align:center}
 .bd.s{background:#fff;color:#000}
+
+#week+br+.vl,#week+.vl{margin-top:34px}
