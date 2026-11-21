@@ -1,7 +1,7 @@
 /* ===== 講師データ（トップページの講師カードと詳細表示）。クラス・料金・お知らせは data.js ===== */
 const INSTRUCTOR_PAGE="instructor.html";
 const INSTR=[
- {id:"shin",ig:"https://www.instagram.com/shin_radiofish_",n:"SHiN",cls:"代表 / 水 Morning Class・Kids / 木 Child",pos:"50% 20%",txt:"MAGNA DANCE SCHOOL代表。事務所：ワタナベエンターテインメント所属／アーティスト：RADIOFISH。現在は次世代のダンサー育成に力を入れている。"},
+ {id:"shin",ig:"https://www.instagram.com/shin_radiofish_",n:"SHiN",cls:"代表 / 水 Morning Class・Kids・Basic Class / 木 Child / 日 Training Class",pos:"50% 20%",txt:"MAGNA DANCE SCHOOL代表。事務所：ワタナベエンターテインメント所属／アーティスト：RADIOFISH。現在は次世代のダンサー育成に力を入れている。"},
  {id:"moeca",ig:"https://www.instagram.com/moeca_kimura",n:"moeca",cls:"水 HipHop/R&B",pos:"50% 10%",txt:"8歳でJAZZを始め、9歳でHIP HOPを始める。FUNKJAZZ、モダンバレエ、コンテンポラリーなど様々なジャンルを習得。高校卒業とともに、東京スカイツリーでのパフォーマーダンサーをきっかけに上京。チーム活動、ナンバー出展、インストラクター、様々なMV・LIVE出演など。"},
  {id:"hina",ig:"https://www.instagram.com/hinaokuyama",n:"hina okuyama",cls:"金 HipHop Freestyle",pos:"50% 20%",txt:"6歳からダンスをはじめ、今はHIP-HOP、freestyleを中心にダンサー、インストラクターとして活動中。"},
  {id:"yuuki",ig:"https://www.instagram.com/nn__uu__",n:"Yuuki",cls:"木 Kids",pos:"50% 70%",txt:"高校の部活動からダンスを始め、専門学校進学後にHipHop、Jazz、Contemporary、House、Heelsなど幅広くジャンルを習得。現在はインストラクターを中心に、ダンサーとして活動中。メンズアイドル育成経験あり。"},
