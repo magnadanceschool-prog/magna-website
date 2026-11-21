@@ -4,9 +4,10 @@ const NEWS=[
  {date:"2026.09.20",tag:"重要",t:"2027年度のクラス再編成について",d:"2027年度より、レッスンの80分化、チケット料金の変更、受け放題プランの廃止を行います。詳細はClass・Priceをご覧ください。",w:1}
 ];
 const DAYS={
- WED:[["10:30–11:20","Morning Class","SHiN"],["16:00–17:20","Kids","SHiN"],["17:30–18:50","K-POP Girls","Yuzuki"],["19:00–20:20","HipHop/R&B","moeca"]],
+ WED:[["10:30–11:20","Morning Class","SHiN"],["16:00–17:20","Kids","SHiN"],["17:30–18:50","K-POP Girls","Yuzuki"],["19:00–20:20","HipHop/R&B","moeca"],["20:30–21:20","Basic Class","SHiN"]],
  THU:[["16:00–16:50","Child","SHiN"],["17:00–18:20","Kids","Yuuki"],["18:30–19:50","Girls","Urara"],["20:00–21:20","Jazz","hana ito"]],
- FRI:[["18:00–19:20","HipHop Freestyle","hina okuyama"],["19:30–20:50","Master Class","講師変動制"]]};
+ FRI:[["18:00–19:20","HipHop Freestyle","hina okuyama"],["19:30–20:50","Master Class","講師変動制"]],
+ SUN:[["時間変動","Training Class","SHiN"]]};
 const CARDS=[
  {h:"50分クラス（18歳以上）",l:[["ビジター（当日1回）","¥3,000"],["チケット4回","¥10,000"],["チケット10回","¥21,000"]]},
  {h:"Kidsクラス（80分）",l:[["ビジター（当日1回）","¥3,500"],["チケット4回","¥12,000"],["チケット10回","¥26,000"]]},
@@ -19,7 +20,7 @@ const NEWS_CSV="https://docs.google.com/spreadsheets/d/e/2PACX-1vSlpI1TXzb4Hhzz8
 
 (function(){
  var el=function(i){return document.getElementById(i)};
- var DAYJP={WED:"水曜日",THU:"木曜日",FRI:"金曜日"};
+ var DAYJP={WED:"水曜日",THU:"木曜日",FRI:"金曜日",SUN:"日曜日"};
  var n=el("newsList");
  var esc=function(t){return String(t==null?"":t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
  function drawNews(list,fromSheet){
