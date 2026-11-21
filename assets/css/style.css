@@ -50,6 +50,7 @@ h2 small{display:block;font:500 13px/1.6 "Noto Sans JP",sans-serif;color:var(--m
 .day h3{margin:0 0 6px;font-size:44px;color:var(--rd)}
 .row{display:grid;grid-template-columns:7.4em 1fr;gap:2px 14px;padding:14px 0;border-top:1px solid #ffffff1f}
 .row .tm{font:400 18px Anton,sans-serif;letter-spacing:.04em}
+.row .tm.vr{font:700 13px "Noto Sans JP",sans-serif;letter-spacing:.04em;padding-top:3px}
 .row .cl{font-weight:900}
 .row .in{grid-column:2;color:var(--mu);font-size:13px;margin-top:-4px}
 .price{background:var(--dg)}
@@ -65,11 +66,11 @@ h2 small{display:block;font:500 13px/1.6 "Noto Sans JP",sans-serif;color:var(--m
 .stat div{font-size:12px;color:var(--mu)}
 .stat b{display:block;font:400 34px Anton,sans-serif;color:var(--wh)}
 .inst .g{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.inst .p{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:block;aspect-ratio:4/5;overflow:hidden;border:1px solid #ffffff14;background:var(--dg2);transition:border-color .3s}
+.inst .p{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 14px 10px;aspect-ratio:4/5;overflow:hidden;border:1px solid #ffffff14;background:var(--dg2);transition:border-color .3s}
 .inst .p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .inst .p::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 52%,#080808e6)}
-.inst .p em{position:absolute;left:14px;right:14px;bottom:30px;z-index:1;font:400 clamp(22px,6vw,34px)/1 Anton,sans-serif;font-style:normal}
-.inst .p span{position:absolute;left:14px;right:14px;bottom:10px;z-index:1;font:500 10px "Noto Sans JP";color:var(--mu);letter-spacing:.06em}
+.inst .p em{position:relative;z-index:1;display:block;margin-bottom:6px;font:400 clamp(22px,6vw,34px)/1 Anton,sans-serif;font-style:normal}
+.inst .p span{position:relative;z-index:1;display:block;min-height:4.5em;font:500 10px/1.5 "Noto Sans JP";color:var(--mu);letter-spacing:.06em}
 .inst .p:hover,.inst .p:focus-visible{border-color:var(--rd)}
 .inst .p:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .md{position:fixed;inset:0;z-index:40;background:#000000d9;display:flex;align-items:flex-end;justify-content:center}
@@ -125,3 +126,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 14px}footer .fl a
 @media(min-width:1100px){.hdr nav{display:flex}.hdr .mn{display:none}}
 @media(min-width:760px){.hdr .mn{margin-left:auto}}
 @media(min-width:900px){.hero{background-position:center,center 0%}.hero .logo{width:min(60%,560px)}}
+
+.row .cl a{color:inherit;text-decoration:none;border-bottom:1px solid #ffffff4d;padding-bottom:1px}
+.row .cl a::after{content:" ›";color:var(--rd)}
+.row .cl a:hover{border-color:var(--rd)}
