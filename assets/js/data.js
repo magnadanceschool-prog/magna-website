@@ -4,10 +4,10 @@ const NEWS=[
  {date:"2026.09.20",tag:"重要",t:"2027年度のクラス再編成について",d:"2027年度より、レッスンの80分化、チケット料金の変更、受け放題プランの廃止を行います。詳細はClass・Priceをご覧ください。",w:1}
 ];
 const DAYS={
- WED:[["10:30–11:20","Morning Class","SHiN","morning"],["16:00–17:20","Kids Class","SHiN","kids-wed"],["17:30–18:50","K-POP Girls Class","Yuzuki","kpop-girls"],["19:00–20:20","HipHop/R&B Class","moeca","hiphop-rnb"],["20:30–21:20","Basic Class","SHiN","basic"]],
- THU:[["16:00–16:50","Child Class","SHiN","child"],["17:00–18:20","Kids Class","Yuuki","kids-thu"],["18:30–19:50","Girls Class","Urara"],["20:00–21:20","Jazz Class","hana ito"]],
- FRI:[["18:00–19:20","HipHop Freestyle Class","hina okuyama","hiphop-freestyle"],["19:30–20:50","Master Class","講師変動制","master"]],
- SUN:[["時間変動","Training Class","SHiN","training"]]};
+ WED:[["10:30–11:20","Morning","SHiN","morning"],["16:00–17:20","Kids","SHiN","kids-wed"],["17:30–18:50","K-POP Girls","Yuzuki","kpop-girls"],["19:00–20:20","HipHop/R&B","moeca","hiphop-rnb"],["20:30–21:20","Basic","SHiN","basic"]],
+ THU:[["16:00–16:50","Child","SHiN","child"],["17:00–18:20","Kids","Yuuki","kids-thu"],["18:30–19:50","Girls","Urara"],["20:00–21:20","Jazz","hana ito"]],
+ FRI:[["18:00–19:20","HipHop Freestyle","hina okuyama","hiphop-freestyle"],["19:30–20:50","Master","講師変動制","master"]],
+ SUN:[["時間変動","Training","SHiN","training"]]};
 const CARDS=[
  {h:"50分クラス（18歳以上）",l:[["ビジター（当日1回）","¥3,000"],["チケット4回","¥10,000"],["チケット10回","¥21,000"]]},
  {h:"Kidsクラス（80分）",l:[["ビジター（当日1回）","¥3,500"],["チケット4回","¥12,000"],["チケット10回","¥26,000"]]},
