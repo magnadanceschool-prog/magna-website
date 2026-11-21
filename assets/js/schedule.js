@@ -3,7 +3,7 @@ const W=[["WED","水曜日","水",[["10:30","11:20","Morning Class","SHiN"],["16
 const VEN={"カムカム新蒲田":"東京都大田区新蒲田一丁目18番16号 カムカム新蒲田","池上会館":"東京都大田区池上1丁目32-8 池上会館","池上会館多目的ホール":"東京都大田区池上1丁目32-8 池上会館","パレット矢口渡":"東京都大田区多摩川1丁目18-1 E HOUSE CAFE 2F パレット矢口渡","スタジオジパング":"東京都大田区池上6丁目5-14 プレゼンス池上 地下1階 スタジオジパング","Studio Green":"東京都大田区蒲田1丁目24-16 シャトー蒲田8 101号室 Studio Green","文化の森第一音楽室":"東京都大田区中央2丁目10-1 文化の森"};
 const $=s=>document.getElementById(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const VURL={"スタジオジパング":"https://maps.google.com/maps/place//data=!4m2!3m1!1s0x601861510759020b:0x4b31d0e6c0bea359?entry=s&sa=X&ved=2ahUKEwj6iOSkspmYAxUkn68BHRG5OucQ4kB6BAgEEAA&hl=ja","パレット矢口渡":"https://maps.app.goo.gl/1P7Zgw9G4SigS2Je8?g_st=ic"};
+const VURL={"文化の森":"https://maps.google.com/maps/place//data=!4m2!3m1!1s0x60186039bfbedaef:0x1714499449158f30?entry=s&sa=X&ved=2ahUKEwj5ruTFt5mYAxXMha8BHSrFFvYQ4kB6BAgEEAA&hl=ja","スタジオジパング":"https://maps.google.com/maps/place//data=!4m2!3m1!1s0x601861510759020b:0x4b31d0e6c0bea359?entry=s&sa=X&ved=2ahUKEwj6iOSkspmYAxUkn68BHRG5OucQ4kB6BAgEEAA&hl=ja","パレット矢口渡":"https://maps.app.goo.gl/1P7Zgw9G4SigS2Je8?g_st=ic"};
 const map=v=>{const u=Object.keys(VURL).find(x=>v.indexOf(x)>=0);if(u)return VURL[u];const k=VEN[v]?v:Object.keys(VEN).find(x=>v.indexOf(x)>=0||x.indexOf(v)>=0);return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(VEN[k]||v)};
 const p2=n=>String(n).padStart(2,"0");
 const norm=s=>String(s).toLowerCase().replace(/[\s\u3000]/g,"");
