@@ -4,10 +4,10 @@ const NEWS=[
  {date:"2026.09.20",tag:"重要",t:"2027年度のクラス再編成について",d:"2027年度より、レッスンの80分化、チケット料金の変更、受け放題プランの廃止を行います。詳細はClass・Priceをご覧ください。",w:1}
 ];
 const DAYS={
- WED:[["10:30–11:20","Morning Class","SHiN","class-morning.html"],["16:00–17:20","Kids","SHiN","class-kids-wed.html"],["17:30–18:50","K-POP Girls","Yuzuki","class-kpop-girls.html"],["19:00–20:20","HipHop/R&B","moeca","class-hiphop-rnb.html"],["20:30–21:20","Basic Class","SHiN","class-basic.html"]],
- THU:[["16:00–16:50","Child","SHiN","class-child.html"],["17:00–18:20","Kids","Yuuki","class-kids-thu.html"],["18:30–19:50","Girls","Urara"],["20:00–21:20","Jazz","hana ito"]],
- FRI:[["18:00–19:20","HipHop Freestyle","hina okuyama","class-hiphop-freestyle.html"],["19:30–20:50","Master Class","講師変動制","class-master.html"]],
- SUN:[["","Training Class","SHiN","class-training.html"]]};
+ WED:[["10:30–11:20","Morning Class","SHiN","morning"],["16:00–17:20","Kids","SHiN","kids-wed"],["17:30–18:50","K-POP Girls","Yuzuki","kpop-girls"],["19:00–20:20","HipHop/R&B","moeca","hiphop-rnb"],["20:30–21:20","Basic Class","SHiN","basic"]],
+ THU:[["16:00–16:50","Child","SHiN","child"],["17:00–18:20","Kids","Yuuki","kids-thu"],["18:30–19:50","Girls","Urara"],["20:00–21:20","Jazz","hana ito"]],
+ FRI:[["18:00–19:20","HipHop Freestyle","hina okuyama","hiphop-freestyle"],["19:30–20:50","Master Class","講師変動制","master"]],
+ SUN:[["時間変動","Training Class","SHiN","training"]]};
 const CARDS=[
  {h:"50分クラス（18歳以上）",l:[["ビジター（当日1回）","¥3,000"],["チケット4回","¥10,000"],["チケット10回","¥21,000"]]},
  {h:"Kidsクラス（80分）",l:[["ビジター（当日1回）","¥3,500"],["チケット4回","¥12,000"],["チケット10回","¥26,000"]]},
@@ -43,6 +43,6 @@ const NEWS_CSV="https://docs.google.com/spreadsheets/d/e/2PACX-1vSlpI1TXzb4Hhzz8
  if(n){drawNews(NEWS,false);
   if(typeof NEWS_CSV==="string"&&NEWS_CSV&&window.fetch)fetch(NEWS_CSV).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){var l=fromCSV(t);if(l.length)drawNews(l,true)}).catch(function(){})}
  var c=el("classBody");
- if(c)c.innerHTML=Object.keys(DAYS).map(function(d){return '<div class="day"><h3 class="disp">'+d+'<small style="font:500 12px \'Noto Sans JP\';color:var(--mu);margin-left:10px">'+DAYJP[d]+'</small></h3>'+DAYS[d].map(function(x){return '<div class="row">'+(x[0]?'<span class="tm">'+x[0]+'</span>':'<span class="tm vr">日時変動</span>')+'<span class="cl">'+(x[3]?'<a href="'+x[3]+'">'+x[1]+'</a>':x[1])+'</span><span class="in">'+x[2]+'</span></div>'}).join("")+'</div>'}).join("");
+ if(c)c.innerHTML=Object.keys(DAYS).map(function(d){return '<div class="day"><h3 class="disp">'+d+'<small style="font:500 12px \'Noto Sans JP\';color:var(--mu);margin-left:10px">'+DAYJP[d]+'</small></h3>'+DAYS[d].map(function(x){return '<div class="row"><span class="tm">'+x[0]+'</span><span class="cl">'+(x[3]?'<a href="class-'+x[3]+'.html">'+x[1]+'</a>':x[1])+'</span><span class="in">'+x[2]+'</span></div>'}).join("")+'</div>'}).join("");
  var p=el("priceBody");
  if(p)p.innerHTML=CARDS.map(function(c){return '<div class="card"><h3>'+c.h+'</h3>'+c.l.map(function(x){return '<div class="ln"><span>'+x[0]+'</span><b>'+x[1]+'</b></div>'}).join("")+(c.x?'<p style="margin:12px 0 0;font-size:12px;color:var(--mu)">'+c.x+'</p>':"")+'</div>'}).join("")})();
