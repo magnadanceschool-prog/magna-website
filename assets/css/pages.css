@@ -11,10 +11,3 @@
 .ov dt{font-weight:900;color:var(--rd)}
 .mc .note{margin-top:40px}
 @media(min-width:820px){.mcg{grid-template-columns:320px 1fr;gap:44px}.mcg .ph{position:sticky;top:84px;align-self:start}}
-
-.cd .bc{margin:0 0 10px;font-size:12px;color:var(--mu);letter-spacing:.08em}
-.cd .bc a{color:var(--mu)}
-.cd .ov dd a{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.cd .mcg p:not(.cta) a{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.cd .cta{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 0}
-.cd .note a{color:inherit;text-decoration:underline}
